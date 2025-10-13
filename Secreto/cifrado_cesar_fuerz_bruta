@@ -1,0 +1,24 @@
+def cifrado_cesar_fuerza_bruta(texto):
+    alfabeto = "abcdefghijklmnñopqrstuvwxyz ,."
+    n = len(alfabeto)
+    indice = {c: i for i, c in enumerate(alfabeto)}
+
+    resultados = []
+    for clave in range(n):
+        salida = []
+        for caracter in texto:
+            if caracter in indice:
+                i = indice[caracter]
+                indice_orig = (i - clave) % n
+                salida.append(alfabeto[indice_orig])
+            else:
+                salida.append(caracter)
+        resultados.append((clave, "".join(salida)))
+    return resultados
+
+texto_cifrado = "l.ziu,mf .fzmk,wzilwgfqw mfai kwukmsw flw,wfifsif.upamz plilflmf .fik,.isfm k.lwfmufmsfk.isfmsfiñ.psiftmcpkiuifdfmsfkwulwzfiulpuwgfk.isfiamfjpkmnisigfxzw,mñmufmsflm xspmñ.mflmsftixiflmfitmzpkifsi,puigflm lmfsifnzwu,mzifuwz,mflmftmcpkwfoi ,ifmsfkijwflmfowzuw gfxsi tiulwfsif.upnpkikpwuflmfsw fpjmzwitmzpkiuw gfu.m ,zwfkwu,pumu,mfu.mawfdfiu,pñ.wgfxzmlm ,puilwfifkwu,mumzf.uifzieify.pu,igfsifzieifkw tpkigfmufsifk.isf mfn.ulpziufsi flp xmz i fdf mfkwu .tizifsif.uplilh"
+
+resultados = cifrado_cesar_fuerza_bruta(texto_cifrado)
+
+for clave, txt in resultados:
+    print(f"Clave {clave:2d}: {txt}\n")
